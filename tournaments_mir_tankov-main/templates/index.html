@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты турниров Лесты</title>
+    <link rel="shortcut icon" href="https://challenge.tanki.su/static/media/header-logo-white-mt.fc3601545dae130f32c190e7cfa3b7bf.svg" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="widget" id="widget">
+        <div id="tournamentSelectWrapper">
+            <select id="tournamentSelect" onchange="loadTournamentResults(this.value)">
+                <option value="" selected disabled hidden>Выберите турнир</option>
+            </select>
+        </div>
+        <h2></h2>
+        <div id="loader" class="loader"></div>
+        <div id="content" style="display: none;">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Введите никнейм">
+                <button id="searchBtn">Поиск</button>
+            </div>
+            <div id="pagination">
+                <button id="prevBtn" disabled>Предыдущие 40 участников</button>
+                <button id="loadMoreBtn">Следующие 40 участников</button>
+            </div>
+            <h3 class="Participants_title__+IYed">
+                <div>
+                    <span>Дата начала турнира:</span>
+                    <span class="tournamentdescription" id="created_at">0</span>
+                </div>
+                <div>
+                    <span>Дата окончания турнира:</span>
+                    <span class="tournamentfinished_at" id="finished_at">0</span>
+                </div>
+                <div>
+                    <span>Описание турнира:</span>
+                    <span class="tournamentdescription" id="description">0</span>
+                </div>
+                <div>
+                    <span>Участники:</span>
+                    <span class="Participants_title_count__Q6wmU" id="participantsCount">0</span>
+                </div>
+            </h3>
+            <table id="playersTable">
+                <thead>
+                    <tr>
+                        <th>Дата обновления данных</th>
+                        <th>Позиция</th>
+                        <th>Приз</th>
+                        <th>Имя</th>
+                        <th>Бои</th>
+                        <th>Победы</th>
+                        <th>Процент побед по турниру</th>
+                        <th>Суммарный опыт</th>
+                        <th>
+                            <div class="header-content">
+                                <div class="header-text">15 лучших боев по опыту</div>
+                                <span class="sort-arrow down" onclick="sortColumn('history')" title="Нажмите, чтобы сортировать опыт"></span>
+                            </div>
+                        </th>
+                        <th>Максимальный опыт</th>
+                        <th>Средний опыт по 15 боям</th>
+                    </tr>
+                </thead>
+                <tbody id="playersBody"></tbody>
+            </table>
+            <div id="pagination">
+                <button id="prevBtn2" disabled>Предыдущие 40 участников</button>
+                <button id="loadMoreBtn2">Следующие 40 участников</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
